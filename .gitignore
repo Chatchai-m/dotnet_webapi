@@ -2,3 +2,7 @@
 
 /dotnet_webapi/bin
 /dotnet_webapi/obj
+/dotnet_webapi/log
+
+/test_log/bin
+/test_log/obj
