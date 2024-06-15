@@ -6,3 +6,6 @@
 
 /test_log/bin
 /test_log/obj
+
+/MSSQLInterface/bin
+/MSSQLInterface/obj
