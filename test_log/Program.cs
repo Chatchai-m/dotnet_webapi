@@ -10,7 +10,7 @@ namespace test_log
             var timer = new Stopwatch();
             timer.Start();
             Int64 result = 0;
-            for (Int64 i = 0; i < 100000000; i++)
+            for (Int64 i = 0; i < 1000000000; i++)
             {
                 var a = ((i + 15000) / (i + 30)) * (i + 10);
                 result += (a % 10) - 120;
@@ -38,30 +38,30 @@ namespace test_log
 
         static async Task Main(string[] args)
         {
-            //var timer = new Stopwatch();
-            //timer.Start();
-            //HeavyComputation("A");
-            //HeavyComputation("B");
-            //HeavyComputation("C");
-            //HeavyComputation("D");
-            //HeavyComputation("E");
-            //timer.Stop();
-            //Console.WriteLine("All: " + timer.ElapsedMilliseconds);
+            // var timer = new Stopwatch();
+            // timer.Start();
+            // HeavyComputation("A");
+            // HeavyComputation("B");
+            // HeavyComputation("C");
+            // HeavyComputation("D");
+            // HeavyComputation("E");
+            // timer.Stop();
+            // Console.WriteLine("All: " + timer.ElapsedMilliseconds);
 
 
 
 
-            //var timer2 = new Stopwatch();
-            //timer2.Start();
-            //Parallel.Invoke(
-            //    () => HeavyComputation("A"),
-            //    () => HeavyComputation("B"),
-            //    () => HeavyComputation("C"),
-            //    () => HeavyComputation("D"),
-            //    () => HeavyComputation("E")
-            //);
-            //timer2.Stop();
-            //Console.WriteLine("All: " + timer2.ElapsedMilliseconds);
+            var timer2 = new Stopwatch();
+            timer2.Start();
+            Parallel.Invoke(
+               () => HeavyComputation("A"),
+               () => HeavyComputation("B"),
+               () => HeavyComputation("C"),
+               () => HeavyComputation("D"),
+               () => HeavyComputation("E")
+            );
+            timer2.Stop();
+            Console.WriteLine("All: " + timer2.ElapsedMilliseconds);
 
 
 
@@ -133,9 +133,9 @@ namespace test_log
 
 
 
-            await fixRaceCondition();
-            Console.WriteLine("\n\n\n");
-            await detectDeadLock();
+            // await fixRaceCondition();
+            // Console.WriteLine("\n\n\n");
+            // await detectDeadLock();
         }
 
 
