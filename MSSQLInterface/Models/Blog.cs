@@ -12,6 +12,6 @@ namespace MSSQLInterface.Models
         public string Name { get; set; }
         public string SiteUri { get; set; }
 
-        public ICollection<Post> Posts { get; }
+        public ICollection<Post> Posts { get; } 
     }
 }

@@ -17,7 +17,7 @@ namespace MSSQLInterface.Data
         //protected string app_dev_schema = "Data Source=tdaa-dataissue-dbserver.database.windows.net; Initial Catalog=test_aa; User Id=tdaa; Password=dataissue2024?;";
 
         protected string app_pro = "Server=localhost;Database=dotnet_webapi; User Id=mos; Password=123456; TrustServerCertificate=True;";
-        protected string app_dev_schema = "Server=localhost;Database=dotnet_webapi; User Id=mos; Password=123456; TrustServerCertificate=True;";
+        protected string app_dev_schema = "Server=localhost;Database=dotnet_webapi_schema; User Id=mos; Password=123456; TrustServerCertificate=True;";
         public MSSQLContext()
         {
             this.Database.SetCommandTimeout(600);

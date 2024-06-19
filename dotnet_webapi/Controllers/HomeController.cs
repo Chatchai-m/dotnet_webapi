@@ -9,6 +9,7 @@ using MSSQLInterface.Data;
 using MSSQLInterface.Models;
 using System.Security.Cryptography;
 using System.Text;
+using System.Data;
 
 namespace dotnet_webapi.Controllers
 {
@@ -25,11 +26,14 @@ namespace dotnet_webapi.Controllers
             using (LogContext.PushProperty("type1", true))
             {
                 // Process request; all logged events will carry `event_type`
+                //_logger.LogInformation("1. Type_1");
+                //_logger.LogWarning("2. Warning");
+                //_logger.LogError("3. Error");
+                //_logger.LogCritical("4. Critical");
                 Log.Information("1.This log message will have an event_type property");
                 Log.Warning("2.ABCD");
                 Log.Error("3.ABCD");
                 Log.Fatal("4.ABCD");
-                Log.Fatal("-------------------------------------------------------");
             }
             return Ok("Hello world -> 1");
         }
@@ -43,9 +47,33 @@ namespace dotnet_webapi.Controllers
                 Log.Warning("2.ABCD");
                 Log.Error("3.ABCD");
                 Log.Fatal("4.ABCD");
-                Log.Fatal("-------------------------------------------------------");
             }
             return Ok("Hello world -> 2");
+        }
+
+
+        public IActionResult LoadBlog()
+        {
+            MSSQLContext mSSQLContext = new MSSQLContext();
+
+            var blogs1 = (
+                from q_blog in mSSQLContext.Blog
+                select new
+                {
+                    q_blog.Id,
+                    q_blog.Name,
+                    posts = q_blog.Posts.Select( q => new {q.Id, q.Title, q.Content } ).ToList() //q_blog.Posts
+                }
+            ).ToList();
+
+            var blogs2 = ( from q_blog2 in mSSQLContext.Blog select q_blog2 ).ToList();
+            //var blogs2 = (from q_post in mSSQLContext.Post select q_post ).ToList();
+
+            Dictionary<string, dynamic> rs = new Dictionary<string, dynamic>();
+
+            rs["blogs1"] = blogs1;
+            rs["blogs2"] = blogs2;
+            return Json(new { rs });
         }
 
         public string GetUniqueKeyOriginal_BIASED(int size)
