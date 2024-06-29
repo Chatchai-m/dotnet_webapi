@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet_webapi", "dotnet_web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test_log", "test_log\test_log.csproj", "{574415FA-D279-4666-8F70-9F712476E28E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSSQLInterface", "MSSQLInterface\MSSQLInterface.csproj", "{4A2DDD4F-B01B-464E-9E9D-93D0A09BED9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSSQLInterface", "MSSQLInterface\MSSQLInterface.csproj", "{4A2DDD4F-B01B-464E-9E9D-93D0A09BED9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

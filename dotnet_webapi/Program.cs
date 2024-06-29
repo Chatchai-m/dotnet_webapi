@@ -1,3 +1,4 @@
+using dotnet_webapi.SignalR;
 using Serilog;
 using Serilog.Events;
 using Serilog.Filters;
@@ -34,7 +35,9 @@ Log.Logger = new LoggerConfiguration()
 Log.Information("Ah, there you are!");
 
 var builder = WebApplication.CreateBuilder(args);
-//builder.Services.AddHttpContextAccessor();
+builder.Services.AddSignalR();
+
+builder.Services.AddHttpContextAccessor();
 //builder.Services.AddLogging(loggingBuilder =>
 //{
 //    //loggingBuilder.ClearProviders();
@@ -57,11 +60,22 @@ if (app.Environment.IsDevelopment())
     // app.UseSwaggerUI();
 }
 
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true) // allow any origin
+    .AllowCredentials()); // allow credentials
+
+app.UseStaticFiles();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHub<SignalrHub>("/hub2");
+app.MapHub<ChatHub>("/chatHub");
 
 app.MapControllerRoute(
     name: "default",
